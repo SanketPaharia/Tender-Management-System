@@ -1,8 +1,11 @@
 package com.masai.model;
 
+import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Tender {
+public class Tender implements Serializable{
 
 	
 	private String id;
@@ -55,5 +58,32 @@ public class Tender {
 	}
 	public void setLocation(String location) {
 		this.location = location;
+	}
+	
+	
+	public Tender (String id, String name, String type, int price,
+			String desc, String stdeadline, String location) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.type = type;
+		this.price = price;
+		this.desc = desc;
+		
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+		Date deadline = null;
+	
+		try {
+			deadline=sdf.parse(stdeadline);  
+		} 
+		catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		this.deadline = deadline;
+		this.location = location;
+	}
+	public Tender() {
+		super();
 	}
 }
