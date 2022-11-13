@@ -41,7 +41,7 @@ public class CreateTender {
 		try{
 			String tid= IDUtil.generateTenderId();
 			FastReader fs = new FastReader();
-			System.out.println("Enter the FirstName\n");
+			System.out.println("Enter the Tendor Name\n");
 			String tname = fs.next();
 			System.out.println("Enter the Tendor type\n");
 			String ttype = fs.next();
@@ -59,6 +59,12 @@ public class CreateTender {
 			System.out.println(tid+" "+tname+" "+ttype+" "+tprice+" "+tdesc+" "+stdeadline+" "+tloc+" "+"completed ");
 			
 			Tender tendor = new Tender(tid ,tname ,ttype ,tprice ,tdesc ,stdeadline ,tloc);
+			
+			TenderDao t = new TenderDaoImpl();
+			
+			String Message = t.createTender(tendor);
+			
+			System.out.println(Message);
 			
 		} catch (Exception e) {
 			// TODO: handle exception

@@ -16,6 +16,7 @@ import com.masai.model.Bidder;
 
 public class BidderDaoImpl implements BidderDao {
 	
+	@Override
 	public String acceptBid(String applicationId,String tenderId,String vendorId) {
 		String status = "Bid Acceptance Failed";
 		
