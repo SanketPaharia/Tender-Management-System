@@ -55,7 +55,7 @@ public class Bidder {
 		this.bidStatus = bidStatus;
 	}
 	
-	public BidderBean(String bidId, String vendorId, String tenderId,
+	public Bidder (String bidId, String vendorId, String tenderId,
 			String bidAmount, String bidDeadline, String bidStatus) {
 		//TODO
 		super();
