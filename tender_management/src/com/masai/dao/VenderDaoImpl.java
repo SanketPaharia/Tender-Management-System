@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.masai.model.Vendor;
+import com.masai.utility.DBUtil;
 
 public class VenderDaoImpl implements VenderDao{
 
@@ -57,11 +58,7 @@ public String registerVendor(Vendor vendor) {
 				e.printStackTrace();
 				status = "Error: "+e.getMessage();
 			}
-			finally{
-				
-				DBUtil.closeConnection(ps);
-				
-			}
+			
 		}
 	}
 	catch(SQLException e){
@@ -69,12 +66,7 @@ public String registerVendor(Vendor vendor) {
 		status = "Error: "+ e.getErrorCode()+" : "+e.getMessage();
 	}
 
-	finally{
-		
-		DBUtil.closeConnection(pst);
-		
-		DBUtil.closeConnection(con);
-	}
+	
 	return status;
 
 }
@@ -103,15 +95,7 @@ public String registerVendor(Vendor vendor) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		finally{
-			
-			DBUtil.closeConnection(con);
-			
-			DBUtil.closeConnection(rs);
-			
-			DBUtil.closeConnection(ps);
-		}
-		
+	
 		return vendorList;
 	}
 
@@ -137,15 +121,7 @@ public String registerVendor(Vendor vendor) {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		finally{
-			
-			DBUtil.closeConnection(conn);
-			
-			DBUtil.closeConnection(pst);
-			
-			DBUtil.closeConnection(rs);
-			
-		}
+		
 		
 		
 		return flag;
@@ -194,12 +170,7 @@ public String registerVendor(Vendor vendor) {
 			
 			e.printStackTrace();
 		}
-		finally{
-			
-			DBUtil.closeConnection(con);
-			
-			DBUtil.closeConnection(ps);
-		}
+	
 		
 		return status;
 		
@@ -244,13 +215,7 @@ public String registerVendor(Vendor vendor) {
 			
 			e.printStackTrace();
 		}
-		finally{
-			
-			DBUtil.closeConnection(con);
-			
-			DBUtil.closeConnection(ps);
 		
-		}
 		return status;
 	}
 
@@ -280,14 +245,7 @@ public String registerVendor(Vendor vendor) {
 
 			e.printStackTrace();
 		}
-		finally{
-			
-			DBUtil.closeConnection(con);
-			
-			DBUtil.closeConnection(rs);
-			
-			DBUtil.closeConnection(ps);
-		}
+		
 		
 		return vendor;
 	}

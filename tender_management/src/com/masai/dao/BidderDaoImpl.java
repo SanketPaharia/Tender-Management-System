@@ -8,12 +8,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.masai.dao.TenderDao;
-import com.masai.dao.TenderDaoImpl;
+
 import com.masai.utility.DBUtil;
 import com.masai.utility.IDUtil;
 import com.masai.model.Bidder;
-import com.masai.utility.*;
+
 
 public class BidderDaoImpl implements BidderDao {
 	
@@ -55,12 +54,7 @@ public class BidderDaoImpl implements BidderDao {
 			status = status + "Error: "+e.getMessage();
 			e.printStackTrace();
 		}
-		finally{
-			
-			DBUtil.closeConnection(con);
-			
-			DBUtil.closeConnection(ps);
-		}
+	
 		return status;
 	}
 	
@@ -89,12 +83,7 @@ public class BidderDaoImpl implements BidderDao {
 			status = status + "Error: "+e.getMessage();
 			e.printStackTrace();
 		}
-		finally{
-			
-			DBUtil.closeConnection(con);
-			
-			DBUtil.closeConnection(ps);
-		}
+		
 		return status;
 			
 	}
@@ -140,12 +129,7 @@ public class BidderDaoImpl implements BidderDao {
 			
 			e.printStackTrace();
 		}
-		finally{
-			
-			DBUtil.closeConnection(con);
-			
-			DBUtil.closeConnection(ps);
-		}
+		
 		
 		
 		return status;
@@ -187,14 +171,7 @@ public class BidderDaoImpl implements BidderDao {
 			
 			e.printStackTrace();
 		}
-		finally{
-			
-			DBUtil.closeConnection(con);
-			
-			DBUtil.closeConnection(ps);
-			
-			DBUtil.closeConnection(rs);
-		}
+		
 		
 		
 		
@@ -236,14 +213,7 @@ List<Bidder> bidderList = new ArrayList<Bidder>();
 			
 			e.printStackTrace();
 		}
-		finally{
-			
-			DBUtil.closeConnection(con);
-			
-			DBUtil.closeConnection(ps);
-			
-			DBUtil.closeConnection(rs);
-		}
+		
 		
 		
 		

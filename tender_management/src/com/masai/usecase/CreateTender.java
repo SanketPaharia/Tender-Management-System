@@ -1,47 +1,71 @@
 package com.masai.usecase;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.StringTokenizer;
 
-
-import com.hit.utility.IDUtil;
+import com.masai.utility.IDUtil;
 import com.masai.model.Tender;
 import com.masai.dao.*;
 
 public class CreateTender {
 
-	
-	public CreateTender() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-protected void doGet() throws  IOException {
+	static class FastReader{
+	    BufferedReader br;
+	    StringTokenizer st;
+	    public FastReader()
+	    {
+	      br = new BufferedReader(new InputStreamReader(System.in));
+	    }
+	    String next()
+	    {
+	      while (st == null || !st.hasMoreElements()){
+	        try { st = new StringTokenizer(br.readLine()); }
+	        catch (IOException e) { e.printStackTrace(); }
+	      }
+	      return st.nextToken();
+	    }
+	    int nextInt() { return Integer.parseInt(next()); }
+	    long nextLong() { return Long.parseLong(next()); }
+	    double nextDouble(){ return Double.parseDouble(next()); }
+	    String nextLine(){
+	      String str = "";
+	      try { str = br.readLine(); }
+	      catch (IOException e) { e.printStackTrace(); }
+	      return str;
+	    }
+	  }
+	public static void main(String[] args) {
+		try{
+			String tid= IDUtil.generateTenderId();
+			FastReader fs = new FastReader();
+			System.out.println("Enter the FirstName\n");
+			String tname = fs.next();
+			System.out.println("Enter the Tendor type\n");
+			String ttype = fs.next();
+			System.out.println("Enter the Tendor price\n");
+			String stprice = fs.next();
+			System.out.println("Enter the Tendor description \n");
+			String tdesc = fs.next();
+			System.out.println("Enter the deadline\n");
+			String stdeadline = fs.next();
+			System.out.println("Enter the location \n");
+			String tloc  = fs.next();
+			
+			int tprice=Integer.parseInt(stprice);
+			
+			System.out.println(tid+" "+tname+" "+ttype+" "+tprice+" "+tdesc+" "+stdeadline+" "+tloc+" "+"completed ");
+			
+			Tender tendor = new Tender(tid ,tname ,ttype ,tprice ,tdesc ,stdeadline ,tloc);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 		
-	
-		String tid= IDUtil.generateTenderId();
-		String tname= request.getParameter("tname").trim();
-		String ttype= request.getParameter("ttype").trim();
-		String stprice= request.getParameter("tprice").trim();
-		String tdesc= request.getParameter("tdesc").trim();
-		String stdeadline= request.getParameter("tdeadline").trim();
-		String tloc= request.getParameter("tloc").trim();
-		int tprice=Integer.parseInt(stprice);
-		System.out.print(tid+" "+tname+" "+ttype+" "+tprice+" "+tdesc+" "+stdeadline+" "+tloc+" "+"completed ");
-		
-		Tender tender = new //TenderBean(id, name, type, price, desc, stdeadline, location)
-				
-				 Tender(tid,tname,ttype,tprice,tdesc,stdeadline,tloc);
-		
-		TenderDao dao = new TenderDaoImpl();
-		
-		String status = dao.createTender(tender);
-		
-		PrintWriter pw = response.getWriter();
-		RequestDispatcher rd = request.getRequestDispatcher("createTender.jsp");
-		
-		rd.include(request, response);
-		
-		pw.print("<script>document.getElementById('show').innerHTML = '"+status+"'</script>");
 	}
+	
 
 }

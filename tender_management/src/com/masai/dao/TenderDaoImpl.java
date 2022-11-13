@@ -1,6 +1,7 @@
 package com.masai.dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,9 +9,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.hit.beans.TenderBean;
-import com.hit.beans.TenderStatusBean;
-import com.hit.utility.DBUtil;
+
+import com.masai.utility.DBUtil;
 import com.masai.model.Tender;
 import com.masai.model.TenderStatus;
 
@@ -68,15 +68,7 @@ public class TenderDaoImpl implements TenderDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		finally{
-			
-			DBUtil.closeConnection(ps);
-			
-			DBUtil.closeConnection(pst);
-			
-			DBUtil.closeConnection(con);
-			
-		}
+		
 		
 		
 		
@@ -115,15 +107,7 @@ public class TenderDaoImpl implements TenderDao {
 
 			e.printStackTrace();
 		}
-		finally{
-			
-			DBUtil.closeConnection(ps);
-			
-			DBUtil.closeConnection(rs);
-			
-			DBUtil.closeConnection(con);
-			
-		}
+		
 		
 		
 		return tenderList;
@@ -162,13 +146,7 @@ public class TenderDaoImpl implements TenderDao {
 			
 			e.printStackTrace();
 		}
-		finally{
 		
-			DBUtil.closeConnection(pst);
-			
-			DBUtil.closeConnection(conn);
-			
-		}
 		
 		return status;
 	}
@@ -198,13 +176,7 @@ boolean flag=false;
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
-		finally{
-			
-			DBUtil.closeConnection(ps);
-			
-			DBUtil.closeConnection(con);
-			
-		}
+		
 				
 		return flag;
 	}
@@ -213,7 +185,7 @@ boolean flag=false;
 	public String updateTender(Tender tender) {
 		String status = "Tender Updation Failed!";
 		
-		Connection con = DBUtil.provideConnection();
+		Connection con = com.masai.utility.DBUtil.provideConnection();
 		
 		PreparedStatement pst = null;
 		
@@ -239,13 +211,7 @@ boolean flag=false;
 			status = "Error: "+e.getMessage();
 			e.printStackTrace();
 		}
-		finally{
-			
-			DBUtil.closeConnection(pst);
-			
-			DBUtil.closeConnection(con);
-			
-		}
+		
 		
 		return status;
 	}
@@ -258,7 +224,7 @@ boolean flag=false;
 		Connection con = DBUtil.provideConnection();
 		
 		PreparedStatement ps = null;
-		PreparedStatement pst = null;
+		
 		try {
 			
 			ps = con.prepareStatement("select * from tender where tid=?");
@@ -283,15 +249,7 @@ boolean flag=false;
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		finally{
-			
-			DBUtil.closeConnection(ps);
-			
-			DBUtil.closeConnection(pst);
-			
-			DBUtil.closeConnection(con);
-			
-		}
+		
 		
 		
 		
@@ -325,13 +283,7 @@ boolean flag=false;
 			status = "Error: "+e.getMessage();
 			e.printStackTrace();
 		}
-		finally{
-			
-			DBUtil.closeConnection(con);
-			DBUtil.closeConnection(ps);
-			DBUtil.closeConnection(rs);
-			
-		}
+		
 		return status;
 	}
 
@@ -405,15 +357,6 @@ boolean flag=false;
 			e.printStackTrace();
 		}
 		
-		finally{
-			
-			DBUtil.closeConnection(con);
-			
-			DBUtil.closeConnection(ps);
-			
-			DBUtil.closeConnection(rs);
-			
-		}
 		
 		return statusList;
 	}
