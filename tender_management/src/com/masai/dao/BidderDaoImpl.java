@@ -1,18 +1,19 @@
 package com.masai.dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.hit.beans.BidderBean;
-import com.hit.dao.TenderDao;
-import com.hit.dao.TenderDaoImpl;
-import com.hit.utility.DBUtil;
-import com.hit.utility.IDUtil;
+import com.masai.dao.TenderDao;
+import com.masai.dao.TenderDaoImpl;
+import com.masai.utility.DBUtil;
+import com.masai.utility.IDUtil;
 import com.masai.model.Bidder;
+import com.masai.utility.*;
 
 public class BidderDaoImpl implements BidderDao {
 	
